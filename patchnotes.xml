@@ -1,0 +1,29 @@
+<?xml version="1.0" standalone="yes"?>
+<patches>
+    <title>PATCH - 0.6</title>
+    <breif>This is a major patch for the KeyTurn CMS. Changing the entire backend framework, adding security, new control features, more developer options, individual user settings and more! Only the major changes will be listed since so much has changed.</breif>
+    <patch>
+        <type>add</type>
+        <desc>Added a code editor for developers, so they can modify the head and sub section of the page</desc>
+    </patch>
+    <patch>
+        <type>add</type>
+        <desc>Added a time stamp to mark the last edit of the pages</desc>
+    </patch>
+    <patch>
+        <type>modify</type>
+        <desc>Changed the entire backend framework to add more security and make the website more fast as a whole. The new system allows for more intricate features in the future</desc>
+    </patch>
+    <patch>
+        <type>bug</type>
+        <desc>Fixed a large ammount of graphical bugs through-out the entire CMS</desc>
+    </patch>
+    <patch>
+        <type>add</type>
+        <desc>Added an installer to the base package for first time setup on a server</desc>
+    </patch>
+    <patch>
+        <type>removed</type>
+        <desc>Removed all code and files associated with the old backend</desc>
+    </patch>
+</patches>

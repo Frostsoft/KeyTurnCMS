@@ -1,0 +1,23 @@
+<?xml version="1.0" standalone="yes"?>
+<plugins>
+    <plugin>
+        <name>email-response</name>
+        <code>&lt;?php
+			if(isset($_GET[&apos;success&apos;])){
+					if($_GET[&apos;success&apos;] == &quot;1&quot;){
+						echo &quot;&lt;script&gt;showAlert(&apos;success&apos;, &apos;Your email has sent successfully!&apos;);&lt;/script&gt;&quot;;
+					} 
+			}
+			if(isset($_GET[&apos;err&apos;])){
+					if($_GET[&apos;err&apos;] == &quot;1&quot;){
+						echo &quot;&lt;script&gt;showAlert(&apos;error&apos;, &apos;You must fill in all the fields!&apos;);&lt;/script&gt;&quot;;
+					} else if($_GET[&apos;err&apos;] == &quot;2&quot;){
+						echo &quot;&lt;script&gt;showAlert(&apos;error&apos;, &apos;Something went wrong, please try again :(&apos;);&lt;/script&gt;&quot;;
+					} else if($_GET[&apos;err&apos;] == &quot;3&quot;){
+						echo &quot;&lt;script&gt;showAlert(&apos;error&apos;, &apos;Please validate the captcha!&apos;);&lt;/script&gt;&quot;;
+					} 
+			}
+			?&gt;</code>
+        <placeholder>[PLUGIN]Email's reponse will show in a notification</placeholder>
+    </plugin>
+</plugins>
