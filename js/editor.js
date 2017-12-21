@@ -138,7 +138,7 @@ $(document).ready(function(){
 	});
 	
 	$("div#changeImage #confirmChange").on('click', function(){
-		current_img.attr("src", "<?php echo $url;?>images/" + $("#imageList").val());
+		current_img.attr("src", location.protocol + "//" + location.host + "/images/" + $("#imageList").val());
 		current_img.attr("alt", $("#imageAlt").val());
 		current_img.attr("class", $("#imageClass").val());
 		current_img.addClass("editable_img");
@@ -179,11 +179,11 @@ $(document).ready(function(){
 			$(this).html($(this).html().replace(/dhref/g,'href'));
         });
 
-        var website_url = escapeRegExp("<?php echo $website; ?>");
+        /**var website_url = escapeRegExp("<?php echo $website; ?>");
         $('div#docBody').each( function() { 
             var re = new RegExp(website_url,"g");
 			$(this).html($(this).html().replace(re,'{%ROOT%}'));
-		});
+		});**/
 		var str = $("div#docBody").html();
 		$("#draftDoc").val(Base64.encode(str));
 		$("#savedraft").submit();

@@ -1,6 +1,7 @@
 <?php
 
 	include_once('init.php');
+	include_once('functions.php');
 
 	//publish only available to those higher than editor
 	if($user_level < 1){
@@ -68,6 +69,9 @@
 	$code = "<?php \$page='$page'; include_once('keyturn/tracker.php');?><html><head><title>$title</title><meta name=\"description\" content=\"" . $desc . "\"><meta name=\"keywords\" content=\"" . $keywords . "\">$head</head><body>$menu $body $footer $sub</body></html>";
 
 	file_put_contents("../".$page.".php", $code);
+
+	userActionPage($connection, $page, "publish", 1);
+
 	header("Location: pages.php?p=$page&pub=1");	
 }
 

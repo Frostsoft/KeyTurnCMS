@@ -36,8 +36,10 @@ if(isset($_SESSION['user'])){
         exit();
     }
 
-    $stmt = $connection->prepare("DELETE FROM `actions` WHERE `time` < GETDATE() - 7");
+    $stmt = $connection->prepare("DELETE FROM `actions` WHERE `time` < NOW() - INTERVAL 7 DAY");
     $stmt->execute();
+
+    file_put_contents("DEBUG_INIT.txt", $stmt->errorCode());
 
 }else{
   header("Location:login.php?ref=1");

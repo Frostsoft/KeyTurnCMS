@@ -55,11 +55,35 @@
                                     </li>
                                     <li>
                                         <div class="message-center">
+                                            <?php
                                             
+                                                $stmt = $connection->prepare("select * from actions order by id desc limit 5");
+                                                $stmt->execute();
+                                                
+                                                while($row = $stmt->fetch()){
+                                                    if($row['type']=="publish"){
+                                                        $title = "Page Action";
+                                                        $icontype = "file-text";
+                                                        $btntype = "info";
+                                                        if($row['action']==1){
+                                                            $msg = " has just published " . $row['page'] . " to the live website";
+                                                        }else if($row['action']==2){
+                                                            $msg = " has just saved draft of " . $row['page'];
+                                                        }
+                                                        $notif = $row['user'] . $msg;
+                                                    }
+                                                    $timestamp = $row['time'];
+                                                    echo '<a href="javascript:void(0);">
+                                                    <div class="btn btn-' . $btntype . ' btn-circle"><i class="fa fa-' . $icontype . '"></i></div>
+                                                    <div class="mail-contnet">
+                                                        <h5>' . $title . '</h5> <span class="mail-desc">' . $notif . '</span> <span class="time">' . $timestamp . '</span> </div>
+                                                    </a>';
+                                                }
+                                            ?>
                                         </div>
                                     </li>
                                     <li>
-                                        <a class="nav-link text-center" href="javascript:void(0);"> <strong>Check all notifications</strong> <i class="fa fa-angle-right"></i> </a>
+                                        <a class="nav-link text-center" href="notifications.php"> <strong>Check all notifications</strong> <i class="fa fa-angle-right"></i> </a>
                                     </li>
                                 </ul>
                             </div>
@@ -77,7 +101,7 @@
                             <div class="dropdown-menu mailbox dropdown-menu-right animated bounceInDown" aria-labelledby="2">
                                 <ul>
                                     <li>
-                                        <div class="drop-title">You have 4 new messages</div>
+                                        <div class="drop-title">You have 0 new messages</div>
                                     </li>
                                     <li>
                                         <div class="message-center">

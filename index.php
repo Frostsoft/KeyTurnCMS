@@ -42,7 +42,7 @@ $totalhits = $row['value_sum'];
     <!-- Dashboard 1 Page CSS -->
     <link href="css/pages/dashboard1.css" rel="stylesheet">
     <!-- You can change the theme colors from here -->
-    <link href="css/colors/blue.css" id="theme" rel="stylesheet">
+    <link href="css/colors/christmas.css?v=3" id="theme" rel="stylesheet">
     <style>
         .change{
   padding: 10px 15px; 
@@ -92,6 +92,7 @@ $totalhits = $row['value_sum'];
     <!-- Main wrapper - style you can find in pages.scss -->
     <!-- ============================================================== -->
     <div id="main-wrapper">
+
         <!-- ============================================================== -->
         <!-- Topbar header - style you can find in pages.scss -->
         <!-- ============================================================== -->
@@ -197,11 +198,25 @@ $totalhits = $row['value_sum'];
 						
 						<?php 
 						
-						$my_version = file_get_contents("version.dat");
+                        $my_version = file_get_contents("version.dat");
+                        
+                        $opts = [
+                            'http' => [
+                                    'method' => 'GET',
+                                    'header' => [
+                                            'User-Agent: PHP'
+                                    ]
+                            ]
+                        ];
+                    
 
-						$web_version = file_get_contents("http://keyturnmedia.com/dev/repo/version_api.php");
+                        $web_version = file_get_contents("https://api.github.com/repos/Frostsoft/KeyTurnCMS/releases/latest", false, stream_context_create($opts));
+                        
+                        $json = json_decode($web_version, true);
+                        
+                        $tag = $json['tag_name'];
 
-						if($my_version == $web_version){
+						if($my_version == $tag){
 						
 						echo '
 						<div class="col-md-12 m-t-10">
@@ -227,7 +242,7 @@ $totalhits = $row['value_sum'];
                                     <div class="d-flex">
                                         <div class="stats">
                                             <h1 class="text-white">v' . $my_version . '</h1>
-											<h6 class="text-white">Out of date (v' . $web_version . ' available)</h6>
+											<h6 class="text-white">Out of date (v' . $tag . ' available)</h6>
                                             <a href="updater.php" class="btn btn-rounded btn-outline btn-light m-t-10 font-14">Update Now</a>
 										</div>
                                         <div class="stats-icon text-right ml-auto"><i class="mdi mdi-alert-outline display-5 op-3 text-dark"></i></div>

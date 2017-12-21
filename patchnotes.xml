@@ -1,29 +1,33 @@
 <?xml version="1.0" standalone="yes"?>
 <patches>
-    <title>PATCH - 0.6</title>
-    <breif>This is a major patch for the KeyTurn CMS. Changing the entire backend framework, adding security, new control features, more developer options, individual user settings and more! Only the major changes will be listed since so much has changed.</breif>
+    <title>Version - 0.7</title>
+    <breif>MERRY CHRISTMAS! This update brings a christmas feel to the dashboard, notifications show on the top bar, notifications can be viewed via the &quot;Check all notifications&quot; button, and lastly notifications delete after 7 days.</breif>
     <patch>
         <type>add</type>
-        <desc>Added a code editor for developers, so they can modify the head and sub section of the page</desc>
+        <desc>Added the ability to view notifications via the top bar</desc>
     </patch>
     <patch>
         <type>add</type>
-        <desc>Added a time stamp to mark the last edit of the pages</desc>
+        <desc>Added the check all notifications button</desc>
     </patch>
     <patch>
         <type>modify</type>
-        <desc>Changed the entire backend framework to add more security and make the website more fast as a whole. The new system allows for more intricate features in the future</desc>
+        <desc>Changed the way the editor links to the domain</desc>
+    </patch>
+    <patch>
+        <type>modify</type>
+        <desc>Major rework of the updater code</desc>
     </patch>
     <patch>
         <type>bug</type>
-        <desc>Fixed a large ammount of graphical bugs through-out the entire CMS</desc>
+        <desc>Fixed a bug causing a new window to open when saving draft</desc>
     </patch>
     <patch>
-        <type>add</type>
-        <desc>Added an installer to the base package for first time setup on a server</desc>
+        <type>bug</type>
+        <desc>Fixed a bug that caused dynamic elements to not work correctly</desc>
     </patch>
     <patch>
-        <type>removed</type>
-        <desc>Removed all code and files associated with the old backend</desc>
+        <type>bug</type>
+        <desc>Fixed a bug causing new users to not have options</desc>
     </patch>
 </patches>

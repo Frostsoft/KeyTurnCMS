@@ -80,9 +80,20 @@
 <link rel="stylesheet" type="text/css" href="asset/css/plugins/font-awesome.min.css"/>
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <?php
-    echo '<base href="' . $url . '" />
-    <base target="_blank" />';
-    echo $meta;
+   // echo '<base href="' . $url . '" />
+   // <base target="_blank" />';
+
+    $rep['/href="(?!https?:\/\/)(?!data:)(?!#)/'] = 'href="'.$url;
+    $rep['/src="(?!https?:\/\/)(?!data:)(?!#)/'] = 'src="'.$url;
+    $rep['/@import[\n+\s+]"\//'] = '@import "'.$url;
+    $rep['/@import[\n+\s+]"\./'] = '@import "'.$url;
+    $meta_out = preg_replace(
+        array_keys($rep),
+        array_values($rep),
+        $meta
+    );
+    
+	echo $meta_out;
 ?>
 <title>KeyBuilder - Beta</title>
 <style>
@@ -248,8 +259,19 @@ The KeyBuilder Website Editor requires javascript to be enabled in your browser.
 	/*
 	foreach($plugins->plugin as $plugin){
 		str_replace("%".$plugin->name."%", $plugin->placeholder, $body);
-	}*/
-		echo $body;
+    }*/
+    
+    $rep['/href="(?!https?:\/\/)(?!data:)(?!#)/'] = 'href="'.$url;
+    $rep['/src="(?!https?:\/\/)(?!data:)(?!#)/'] = 'src="'.$url;
+    $rep['/@import[\n+\s+]"\//'] = '@import "'.$url;
+    $rep['/@import[\n+\s+]"\./'] = '@import "'.$url;
+    $body_out = preg_replace(
+        array_keys($rep),
+        array_values($rep),
+        $body
+    );
+    
+	echo $body_out;
 	?>
 </div>
 
@@ -329,15 +351,22 @@ The KeyBuilder Website Editor requires javascript to be enabled in your browser.
 </div>
 
 <?php
-	echo $scripts;
+   $rep['/href="(?!https?:\/\/)(?!data:)(?!#)/'] = 'href="'.$url;
+   $rep['/src="(?!https?:\/\/)(?!data:)(?!#)/'] = 'src="'.$url;
+   $rep['/@import[\n+\s+]"\//'] = '@import "'.$url;
+   $rep['/@import[\n+\s+]"\./'] = '@import "'.$url;
+   $scripts_out = preg_replace(
+       array_keys($rep),
+       array_values($rep),
+       $scripts
+   );
+	echo $scripts_out;
 ?>
 <!--<script src="asset/js/editor.js"></script>-->
 <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-<script src="keyturn/js/base64.js"></script>
-<script src="keyturn/js/editor.js"></script>
-
-
+<script src="js/base64.js"></script>
+<script src="js/editor.js?v=2_1"></script>
 
 
 </body>

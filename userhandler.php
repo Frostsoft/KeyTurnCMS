@@ -78,7 +78,7 @@ if(isset($_POST['create_user'])){
             "username" => $_POST['new_name'],
             "password"  => password_hash($_POST['new_pass'], PASSWORD_BCRYPT, $options),
             "userlevel"     => $level,
-            "options"       => "{\"dev_ops\": true}"
+            "options"       => "{\"dev_ops\": true,\"patch_noshow\":false}"
         );
     
         $SQL_userinfo = sprintf(

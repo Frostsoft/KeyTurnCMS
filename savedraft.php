@@ -1,6 +1,7 @@
 <?php
 
 include_once('init.php');
+include_once('functions.php');
 	
 if(isset($_POST['page']) && isset($_POST['body'])){
 $page = $_POST['page'];
@@ -25,6 +26,8 @@ WHERE `pagename` = :pagename");
 $stmt->bindValue(":content", $body);
 $stmt->bindValue(":pagename", $page);
 $stmt->execute();
+
+userActionPage($connection, $page, "publish", 2);
 
 header("Location: pages.php?p=".$page."&saved=1");
 }
