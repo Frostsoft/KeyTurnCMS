@@ -39,6 +39,7 @@ $totalhits = $row['value_sum'];
     <link href="assets/plugins/toast-master/css/jquery.toast.css" rel="stylesheet">
     <!-- Custom CSS -->
     <link href="css/style.css" rel="stylesheet">
+    <link href="assets/plugins/sweetalert/sweetalert.css" rel="stylesheet" type="text/css">
     <!-- Dashboard 1 Page CSS -->
     <link href="css/pages/dashboard1.css" rel="stylesheet">
     <!-- You can change the theme colors from here -->
@@ -243,7 +244,7 @@ $totalhits = $row['value_sum'];
                                         <div class="stats">
                                             <h1 class="text-white">v' . $my_version . '</h1>
 											<h6 class="text-white">Out of date (v' . $tag . ' available)</h6>
-                                            <a href="updater.php" class="btn btn-rounded btn-outline btn-light m-t-10 font-14">Update Now</a>
+                                            <a href="updater.php" id="updater_btn" class="btn btn-rounded btn-outline btn-light m-t-10 font-14">Update Now</a>
 										</div>
                                         <div class="stats-icon text-right ml-auto"><i class="mdi mdi-alert-outline display-5 op-3 text-dark"></i></div>
 									</div>
@@ -386,6 +387,7 @@ $totalhits = $row['value_sum'];
     <script src="assets/plugins/c3-master/c3.min.js"></script>
     <!-- Popup message jquery -->
     <script src="assets/plugins/toast-master/js/jquery.toast.js"></script>
+    <script src="assets/plugins/sweetalert/sweetalert.min.js"></script>
     <!-- Chart JS -->
     <script src="js/dashboard1.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
@@ -404,6 +406,10 @@ $("#patch_dismiss").on('click', function(){
 				data : {"patch_dismiss" : "true"},
 				async: true
 			});
+});
+
+$("#updater_btn").on('click', function(){
+    swal("Updating!", "DO NOT leave this page until updating has completed!", "danger"); 
 });
 
 var ctx = document.getElementById("pageviews-chart").getContext('2d');
