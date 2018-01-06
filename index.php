@@ -43,7 +43,7 @@ $totalhits = $row['value_sum'];
     <!-- Dashboard 1 Page CSS -->
     <link href="css/pages/dashboard1.css" rel="stylesheet">
     <!-- You can change the theme colors from here -->
-    <link href="css/colors/christmas.css?v=3" id="theme" rel="stylesheet">
+    <link href="css/colors/blue.css" id="theme" rel="stylesheet">
     <style>
         .change{
   padding: 10px 15px; 
@@ -244,7 +244,7 @@ $totalhits = $row['value_sum'];
                                         <div class="stats">
                                             <h1 class="text-white">v' . $my_version . '</h1>
 											<h6 class="text-white">Out of date (v' . $tag . ' available)</h6>
-                                            <a href="updater.php" id="updater_btn" class="btn btn-rounded btn-outline btn-light m-t-10 font-14">Update Now</a>
+                                            <a href="javascript:void(0);" id="updater_btn" class="btn btn-rounded btn-outline btn-light m-t-10 font-14">Update Now</a>
 										</div>
                                         <div class="stats-icon text-right ml-auto"><i class="mdi mdi-alert-outline display-5 op-3 text-dark"></i></div>
 									</div>
@@ -409,7 +409,17 @@ $("#patch_dismiss").on('click', function(){
 });
 
 $("#updater_btn").on('click', function(){
-    swal("Updating!", "DO NOT leave this page until updating has completed!", "danger"); 
+    swal("Updating!", "DO NOT leave this page until updating has completed!", "warning"); 
+    $.ajax({ type: "POST",   
+        url: "updater.php",   
+        data : {
+        },
+        async: true,
+        success : function(text)
+        {
+            window.location = "index.php?update=0";
+        }
+    });
 });
 
 var ctx = document.getElementById("pageviews-chart").getContext('2d');

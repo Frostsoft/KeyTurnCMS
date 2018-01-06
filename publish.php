@@ -12,6 +12,18 @@
 	$stmt->execute();
 	$website = $stmt->fetchColumn();
 
+	function endsWith($haystack, $needle)
+	{
+		$length = strlen($needle);
+	
+		return $length === 0 || 
+		(substr($haystack, -$length) === $needle);
+	}
+
+	$url = $website;
+	if(!endsWith($url, "/"))
+		$url = $url . "/";
+	
 	//Grab global css and scripts from globals table
 	//Grab content head and sub from page
 	//build the header of the page using globals and the page head
@@ -55,6 +67,8 @@
 	$body =  htmlspecialchars_decode($row['content']);
 	$sub .=  htmlspecialchars_decode($row['sub']);
 
+	$body = str_replace("{%ROOT_URL%}", $url, $body);
+
 	//Fetch all globals
 	$stmt = $connection->prepare("SELECT type, content FROM globals");
 	$stmt->execute();
@@ -65,6 +79,9 @@
 			$sub .= htmlspecialchars_decode($row['content']);
 		}
 	}
+
+	$head = str_replace("{%ROOT_URL%}", $url, $head);
+	$sub = str_replace("{%ROOT_URL%}", $url, $sub);
 
 	$code = "<?php \$page='$page'; include_once('keyturn/tracker.php');?><html><head><title>$title</title><meta name=\"description\" content=\"" . $desc . "\"><meta name=\"keywords\" content=\"" . $keywords . "\">$head</head><body>$menu $body $footer $sub</body></html>";
 

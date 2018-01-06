@@ -7,7 +7,6 @@ if($user_level == 2){
   // UPDATER FUNCTIONS
 
   function deleteDir($dirPath) {
-    echo "On delete cycle <br>";
     if (! is_dir($dirPath)) {
         throw new InvalidArgumentException("$dirPath must be a directory");
     }

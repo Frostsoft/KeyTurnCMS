@@ -93,7 +93,7 @@ if(isset($_COOKIE["remember_user"])) {
     <!-- ============================================================== -->
     <!-- Main wrapper - style you can find in pages.scss -->
     <!-- ============================================================== -->
-    <section id="wrapper" class="login-register login-sidebar" style="background-image:url('https://source.unsplash.com/daily');">
+    <section id="wrapper" class="login-register login-sidebar" style="background-image:url('https://source.unsplash.com/daily?city');">
         <div class="login-box card">
             <div class="card-body">
                 <form class="form-horizontal form-material" id="loginform" action="#" method="post">

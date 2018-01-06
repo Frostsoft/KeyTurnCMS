@@ -46,7 +46,15 @@
                         <!-- ============================================================== -->
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="mdi mdi-message"></i>
-                                <div class="notify"> <span class="heartbit"></span> <span class="point"></span> </div>
+                            
+                                <?php
+                                $stmt = $connection->prepare("select * from actions order by id desc limit 5");
+                                $stmt->execute();
+                                if($stmt->rowCount() > 0){
+                                    echo '<div class="notify"> <span class="heartbit"></span> <span class="point"></span> </div>';
+                                }
+
+                                ?>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right mailbox animated bounceInDown">
                                 <ul>
@@ -57,8 +65,7 @@
                                         <div class="message-center">
                                             <?php
                                             
-                                                $stmt = $connection->prepare("select * from actions order by id desc limit 5");
-                                                $stmt->execute();
+                                                
                                                 
                                                 while($row = $stmt->fetch()){
                                                     if($row['type']=="publish"){

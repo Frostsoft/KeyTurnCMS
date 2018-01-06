@@ -1,4 +1,6 @@
 <?php
+include_once('init.php');
+
 function endsWith($haystack, $needle)
 {
     $length = strlen($needle);

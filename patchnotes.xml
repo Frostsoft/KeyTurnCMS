@@ -1,33 +1,21 @@
 <?xml version="1.0" standalone="yes"?>
 <patches>
-    <title>Version - 0.7</title>
-    <breif>MERRY CHRISTMAS! This update brings a christmas feel to the dashboard, notifications show on the top bar, notifications can be viewed via the &quot;Check all notifications&quot; button, and lastly notifications delete after 7 days.</breif>
+    <title>Version - 0.8</title>
+    <breif>Happy New Year! With the new year brings new designs and optimizations for the website editor! The Menu now opens by clicking the "Menu" button in the top right, and all elements now update live while typing the new content!</breif>
     <patch>
-        <type>add</type>
-        <desc>Added the ability to view notifications via the top bar</desc>
-    </patch>
-    <patch>
-        <type>add</type>
-        <desc>Added the check all notifications button</desc>
+        <type>modify</type>
+        <desc>Changed the design of the editor</desc>
     </patch>
     <patch>
         <type>modify</type>
-        <desc>Changed the way the editor links to the domain</desc>
-    </patch>
-    <patch>
-        <type>modify</type>
-        <desc>Major rework of the updater code</desc>
+        <desc>Changed the way the base url saves in the cms files (Will help solve domain change induced bugs)</desc>
     </patch>
     <patch>
         <type>bug</type>
-        <desc>Fixed a bug causing a new window to open when saving draft</desc>
+        <desc>Fixed multiple editor bugs</desc>
     </patch>
     <patch>
         <type>bug</type>
-        <desc>Fixed a bug that caused dynamic elements to not work correctly</desc>
-    </patch>
-    <patch>
-        <type>bug</type>
-        <desc>Fixed a bug causing new users to not have options</desc>
+        <desc>Fixed a bug causing images to not upload</desc>
     </patch>
 </patches>

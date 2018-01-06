@@ -109,7 +109,7 @@
                             <div class="card-body">
                                 <h4 class="card-title">Upload Images</h4>
                                 <h6 class="card-subtitle">It is recommended to optimize your images before uploading them!</h6>
-                                <form action="image-upload.php" class="dropzone">
+                                <form action="image-upload.php" class="dropzone" id="my-dropzone">
                                     <div class="fallback">
                                         <input name="file" type="file" multiple />
                                     </div>
@@ -179,31 +179,6 @@
                                 <li><a href="javascript:void(0)" data-theme="megna-dark" class="megna-dark-theme ">12</a></li>
                             </ul>
                             <ul class="m-t-20 chatonline">
-                                <li><b>Chat option</b></li>
-                                <!--<li>
-                                    <a href="javascript:void(0)"><img src="assets/images/users/1.jpg" alt="user-img" class="img-circle"> <span>Varun Dhavan <small class="text-success">online</small></span></a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0)"><img src="assets/images/users/2.jpg" alt="user-img" class="img-circle"> <span>Genelia Deshmukh <small class="text-warning">Away</small></span></a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0)"><img src="assets/images/users/3.jpg" alt="user-img" class="img-circle"> <span>Ritesh Deshmukh <small class="text-danger">Busy</small></span></a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0)"><img src="assets/images/users/4.jpg" alt="user-img" class="img-circle"> <span>Arijit Sinh <small class="text-muted">Offline</small></span></a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0)"><img src="assets/images/users/5.jpg" alt="user-img" class="img-circle"> <span>Govinda Star <small class="text-success">online</small></span></a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0)"><img src="assets/images/users/6.jpg" alt="user-img" class="img-circle"> <span>John Abraham<small class="text-success">online</small></span></a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0)"><img src="assets/images/users/7.jpg" alt="user-img" class="img-circle"> <span>Hritik Roshan<small class="text-success">online</small></span></a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0)"><img src="assets/images/users/8.jpg" alt="user-img" class="img-circle"> <span>Pwandeep rajan <small class="text-success">online</small></span></a>
-                                </li>-->
                             </ul>
                         </div>
                     </div>
@@ -260,13 +235,29 @@
     <!-- Chart JS / Dropzone -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
     <script src="assets/plugins/dropzone-master/dist/dropzone.js"></script>
+    <script type="text/javascript">// Immediately after the js include
+        Dropzone.autoDiscover = false;
+    </script>
     <script src="assets/plugins/sweetalert/sweetalert.min.js"></script>
     <!-- ============================================================== -->
     <!-- Style switcher -->
     <!-- ============================================================== -->
     <script src="assets/plugins/styleswitcher/jQuery.style.switcher.js"></script>
     <script type="text/javascript">
+
+//Sorry, your file was not uploaded.
+
   $(document).ready(function(){
+    new Dropzone("#my-dropzone", { 
+        maxFilesize: 5, // MB
+        init: function() {
+            this.on("success", function(file, responseText) {
+                //FUTURE ERROR CODE REPORTING HERE
+            });
+        }
+    });
+
+
       $("span#deleteImage").on('click', function(e) {
         var clickedon = $(this);
         var response = '';
